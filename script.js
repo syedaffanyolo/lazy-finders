@@ -1,4 +1,4 @@
-// const apiKey = 'AIzaSyAh1HvFyW5PQ4bRFLw4QJzNJk-XWSRWISw';
+const apiKey = 'AIzaSyAh1HvFyW5PQ4bRFLw4QJzNJk-XWSRWISw';
 
 function initMap() {
     var directionsService = new google.maps.DirectionsService();
