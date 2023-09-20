@@ -1,0 +1,115 @@
+import requests
+import geocoder
+import time
+import googlemaps
+from datetime import datetime
+
+charge = True
+noroute = True
+api_url = "http://lazyfinder.pythonanywhere.com"
+api_key = 'https://maps.googleapis.com/maps/api/js?key=${AIzaSyAh1HvFyW5PQ4bRFLw4QJzNJk-XWSRWISw}'  # Replace with your Google Maps API key
+lat = 0
+long = 0
+curlat = 0
+curlong = 0
+blocklist = {
+    "a": "12.789,74.89",
+    "b": ",",
+    "c": ",",
+    "d": ",",
+    "e": ",",
+    "f": ",",
+    "g": ",",
+    "h": ",",
+    "i": ",",
+    "j": ",",
+    "k": ",",
+    "l": ",",
+    "m": ",",
+    "n": ",",
+    "o": ",",
+    "p": ",",
+    "q": ",",
+    "r": ",",
+}
+start = False
+
+
+def charge_robot():
+    global charge
+    status_charge = input("Charging (battery), solar panel disabled. Press 'f' to continue...")
+    if status_charge == 'f':
+        print("Ready to deliver")
+        charge = False
+
+
+def select_block():
+    global noroute
+    global lat, long
+    status_route = input("Select a block (a, b, c, ...): ")
+    if status_route in blocklist:
+        lat, long = str(blocklist[status_route]).split(',')
+        print(f"Latitude set to: {lat}")
+        print(f"Longitude set to: {long}")
+        noroute = False
+
+
+def fetch_live_location():
+    try:
+        while True:
+            location = geocoder.ip('me')
+
+            if location.ok:
+                latitude = location.latlng[0]
+                longitude = location.latlng[1]
+                print(f"Current Latitude: {latitude}, Longitude: {longitude}")
+                curlat = latitude
+                curlong = longitude
+                response = requests.get(api_url + f"/{latitude}/{longitude}")
+                print(response.json())
+            else:
+                print("Could not retrieve location data")
+
+    except KeyboardInterrupt:
+        print("Location program terminated by user")
+
+
+def fetch_route_directions(api_key, origin, destination):
+    gmaps = googlemaps.Client(key=api_key)
+
+    try:
+        directions_result = gmaps.directions(origin, destination, mode="driving", departure_time=datetime.now())
+
+        if directions_result:
+            # Print the summary of the first route
+            route_summary = directions_result[0]['summary']
+            print(f"Route Summary: {route_summary}")
+
+            # Print each step in the route
+            for step in directions_result[0]['legs'][0]['steps']:
+                print(step['html_instructions'])
+                print(f"Distance: {step['distance']['text']}")
+                print(f"Duration: {step['duration']['text']}\n")
+
+        else:
+            print("No directions found")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def main():
+    global charge, noroute, start
+
+    while charge:
+        charge_robot()
+
+    while noroute:
+        select_block()
+
+    fetch_live_location()
+    fetch_route_directions(api_key, f"{curlat},{curlong}", f"{lat},{long}")
+
+
+if __name__ == "__main__":
+    main()
