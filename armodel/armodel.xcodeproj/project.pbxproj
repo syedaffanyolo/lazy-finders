@@ -14,6 +14,7 @@
 		CD648D0C2ABB75B90029A785 /* armodelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD648D0B2ABB75B90029A785 /* armodelTests.swift */; };
 		CD648D162ABB75B90029A785 /* armodelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD648D152ABB75B90029A785 /* armodelUITests.swift */; };
 		CD648D182ABB75B90029A785 /* armodelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD648D172ABB75B90029A785 /* armodelUITestsLaunchTests.swift */; };
+		CD648D252ABB824A0029A785 /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD648D242ABB824A0029A785 /* DeviceLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		CD648D112ABB75B90029A785 /* armodelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = armodelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD648D152ABB75B90029A785 /* armodelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = armodelUITests.swift; sourceTree = "<group>"; };
 		CD648D172ABB75B90029A785 /* armodelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = armodelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD648D242ABB824A0029A785 /* DeviceLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
+		CD648D262ABB8BC40029A785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +97,10 @@
 		CD648CF92ABB75B80029A785 /* armodel */ = {
 			isa = PBXGroup;
 			children = (
+				CD648D262ABB8BC40029A785 /* Info.plist */,
 				CD648CFA2ABB75B80029A785 /* armodelApp.swift */,
 				CD648CFC2ABB75B80029A785 /* ContentView.swift */,
+				CD648D242ABB824A0029A785 /* DeviceLocationService.swift */,
 				CD648CFE2ABB75B90029A785 /* Assets.xcassets */,
 				CD648D002ABB75B90029A785 /* Preview Content */,
 			);
@@ -259,6 +264,7 @@
 			files = (
 				CD648CFD2ABB75B80029A785 /* ContentView.swift in Sources */,
 				CD648CFB2ABB75B80029A785 /* armodelApp.swift in Sources */,
+				CD648D252ABB824A0029A785 /* DeviceLocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +426,8 @@
 				DEVELOPMENT_TEAM = 4E7TQFPUUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = armodel/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +457,8 @@
 				DEVELOPMENT_TEAM = 4E7TQFPUUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = armodel/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

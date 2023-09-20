@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 pt = {'lat': 0, 'lon': 0}
 
 @app.route('/<lat>/<lon>')

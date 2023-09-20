@@ -184,7 +184,7 @@ function initMap() {
             }
         });
 
-        var t = setInterval(runFunction,5000);
+        var t = setInterval(runFunction,1000);
 
         function runFunction() {
             fetch('http://lazyfinder.pythonanywhere.com/')
