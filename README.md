@@ -12,4 +12,4 @@ Software made with
 -> Hardware Model: Fusion 360
 
 Screenshots
-!(UI-Delivery.svg)
+![Cad Model](https://github.com/syedaffanyolo/lazy-finders/blob/0d722579106a4485fe142a25319fc53de0705a62/Screenshot%202023-09-20%20at%201.31.38%20PM.png)
